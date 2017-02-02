@@ -27,13 +27,17 @@ class Player(object):
             self.adversary = adversary
         return self.adversary
 
-    def jouer(self, grid):
+    def play(self, grid):
         """ Takes the inputs of the player and makes him play"""
         while True:
-            pos = input("What is the position you want to conquer")
+            pos = input("What is the position " + self.name + " want to conquer : ")
             pos = pos.split(" ")
-            pos_x = pos[0]
-            pos_y = pos[1]
+            try:
+                pos_x = int(pos[0])
+                pos_y = int(pos[1])
+            except ValueError:
+                print('you must type "x y" where x and y is the pos you want to play')
+                continue
             if grid.add_a_pawn(self, pos_x, pos_y):
                 break
             
