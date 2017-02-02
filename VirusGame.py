@@ -23,19 +23,17 @@ class VirusGame:
 
         self.player1.set_adversary(self.player2)
         self.player2.set_adversary(self.player1)
-
+        self.player = self.player1
     def play(self):
         """
         launch the game
         """
-        player = self.player1
-        while True:
-            print(self.grid)
-            if self.grid.is_finished():
-                break
+        print(self.grid)
+        if self.grid.is_finished():
+            return False
 
-            player.play(self.grid)
-            player = player.get_adversary()
+        self.player.play(self.grid)
+        self.player = self.player.get_adversary()
 
 if __name__ == "__main__":
     GAME = VirusGame(3)
